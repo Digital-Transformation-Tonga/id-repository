@@ -2,7 +2,7 @@ pipeline {
     agent none
     environment {
         PROJECT = 'credential-service'
-        APP_NAME = 'mosip-registration-client'
+        APP_NAME = 'id-repository'
         BRANCH_NAME = 'deployment-dev'
         IMAGE_TAG = "${PROJECT}/${APP_NAME}:${BRANCH_NAME}.${env.BUILD_NUMBER}"
         CIR_USER = 'kajakaran095'
