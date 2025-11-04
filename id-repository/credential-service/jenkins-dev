@@ -21,7 +21,7 @@ pipeline {
                 }
             }
             steps {
-                dir('/id-repository/credential-service') {
+                dir('id-repository/credential-service') {
                     // Build the project
                     sh 'mvn clean install -DskipTests=true  -Dgpg.skip -Dmaven.javadoc.skip=true'
                 }
