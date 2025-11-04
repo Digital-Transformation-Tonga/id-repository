@@ -1,0 +1,55 @@
+pipeline {
+    agent none
+    environment {
+        PROJECT = 'egovdigitaltonga'
+        APP_NAME = 'id-repository-credentials-feeder'
+        BRANCH_NAME = 'deployment-dev'
+        IMAGE_TAG = "${PROJECT}/${APP_NAME}:${BRANCH_NAME}.${env.BUILD_NUMBER}"
+        CIR_USER = 'kajakaran095'
+        CIR_PW = credentials('cir-pw')
+    }
+    options {
+        skipStagesAfterUnstable()
+        disableConcurrentBuilds()
+    }
+    stages {
+        stage('Build & Test') {
+            agent {
+                docker {
+                    image 'maven:3-eclipse-temurin-11'
+                    args '-u root -v $HOME/.m2:/root/.m2'  // Cache Maven repository
+                }
+            }
+            steps {
+                dir('id-repository/id-repository-credentials-feeder') {
+                    // Build the project
+                    sh 'mvn clean install -DskipTests=true  -Dgpg.skip -Dmaven.javadoc.skip=true'
+                }
+            }
+        }
+        stage('Building & Deploy Image') {
+            agent any
+            steps {
+                dir('id-repository/id-repository-credentials-feeder') {
+                    sh 'docker login -u ${CIR_USER} -p ${CIR_PW}'
+                    sh 'docker build --tag=${IMAGE_TAG} .'
+                    sh 'docker push ${IMAGE_TAG}'
+                }
+            }
+        }
+}
+}
+
+        //    stage('Deploy cluster') {
+        //    agent {
+        //        docker {
+       //             image 'inovadockerimages/cicdtools:latest'
+         //          args '--entrypoint="" -v /root/.kube:/root/.kube'
+          //      }
+         //   }
+        ///   steps {
+        //        sh 'kubectl set image deployment/regclient  regclient=${IMAGE_TAG}  --record -n regclient'
+        //    }
+        //    }
+  //  }
+//}
