@@ -38,16 +38,16 @@ pipeline {
             }
         }
 
-            stage('Deploy cluster') {
-            agent {
-                docker {
-                    image 'inovadockerimages/cicdtools:latest'
-                    args '--entrypoint="" -v /root/.kube:/root/.kube'
+        //    stage('Deploy cluster') {
+         //   agent {
+              //  docker {
+               //     image 'inovadockerimages/cicdtools:latest'
+            //        args '--entrypoint="" -v /root/.kube:/root/.kube'
                 }
             }
-            steps {
-                sh 'kubectl set image deployment/regclient  regclient=${IMAGE_TAG}  --record -n regclient'
-            }
+         //   steps {
+          //      sh 'kubectl set image deployment/regclient  regclient=${IMAGE_TAG}  --record -n regclient'
+          //  }
             }
     }
 }
