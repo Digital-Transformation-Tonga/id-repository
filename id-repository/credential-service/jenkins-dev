@@ -1,7 +1,7 @@
 pipeline {
     agent none
     environment {
-        PROJECT = 'credential-service'
+        PROJECT = 'egovdigitaltonga'
         APP_NAME = 'id-repository-credential-service'
         BRANCH_NAME = 'deployment-dev'
         IMAGE_TAG = "${PROJECT}/${APP_NAME}:${BRANCH_NAME}.${env.BUILD_NUMBER}"
