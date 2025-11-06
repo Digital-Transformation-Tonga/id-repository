@@ -1,6 +1,6 @@
 #FROM openjdk:11
 #FROM eclipse-temurin:11
-FROM registry.redhat.io/openjdk-els/openjdk-11-rhel8
+FROM registry.access.redhat.com/ubi8/openjdk-11
 
 ARG SOURCE
 ARG COMMIT_HASH
