@@ -6,6 +6,7 @@ import static io.mosip.idrepository.core.constant.IdRepoErrorConstants.ID_OBJECT
 import static io.mosip.idrepository.core.constant.IdRepoErrorConstants.INVALID_INPUT_PARAMETER;
 import static io.mosip.idrepository.core.constant.IdRepoErrorConstants.MISSING_INPUT_PARAMETER;
 
+import java.util.Set;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
