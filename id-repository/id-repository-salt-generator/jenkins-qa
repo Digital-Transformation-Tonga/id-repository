@@ -48,7 +48,7 @@ pipeline {
                 }
             }
            steps {
-                sh 'kubectl set image job/idrepo-saltgen  credential=${IMAGE_TAG}  --record -n idrepo'
+                sh 'kubectl set image job/idrepo-saltgen  idrepo-saltgen=${IMAGE_TAG}  --record -n idrepo'
             }
             }
     
