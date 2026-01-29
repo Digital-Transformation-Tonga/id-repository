@@ -43,7 +43,7 @@ pipeline {
             stage('Deploy cluster') {
             agent {
                 docker {
-                    image 'egovdigitaltonga/id-repository-credential-service/cicdtools'
+                    image 'egovdigitaltonga/cicdtools:latest'
                    args '--entrypoint="" -v /root/.kube:/root/.kube'
                 }
             }
