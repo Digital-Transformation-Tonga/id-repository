@@ -3,7 +3,7 @@ pipeline {
     environment {
         PROJECT = 'egovdigitaltonga'
         APP_NAME = 'id-repository-vid-service'
-        BRANCH_NAME = 'deployment-dev'
+        BRANCH_NAME = 'deployment-qa'
         IMAGE_TAG = "${PROJECT}/${APP_NAME}:${BRANCH_NAME}.${env.BUILD_NUMBER}"
         CIR_USER = 'kajakaran095'
         CIR_PW = credentials('cir-pw')
@@ -37,19 +37,20 @@ pipeline {
                 }
             }
         }
-}
-}
 
-        //    stage('Deploy cluster') {
-        //    agent {
-        //        docker {
-       //             image 'inovadockerimages/cicdtools:latest'
-         //          args '--entrypoint="" -v /root/.kube:/root/.kube'
-          //      }
-         //   }
-        ///   steps {
-        //        sh 'kubectl set image deployment/regclient  regclient=${IMAGE_TAG}  --record -n regclient'
-        //    }
-        //    }
-  //  }
-//}
+
+
+        stage('Deploy cluster') {
+            agent {
+                docker {
+                    image 'egovdigitaltonga/cicdtools:latest'
+                   args '--entrypoint="" -v /root/.kube:/root/.kube'
+                }
+            }
+           steps {
+                sh 'kubectl set image deployment/vid  vid=${IMAGE_TAG}  --record -n idrepo'
+            }
+            }
+    
+    }
+}
