@@ -37,7 +37,7 @@ pipeline {
                 }
             }
         }
-}
+
 
 
             stage('Deploy cluster') {
@@ -52,4 +52,5 @@ pipeline {
             }
             }
     
+    }
 }
