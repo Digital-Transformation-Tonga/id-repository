@@ -38,7 +38,7 @@ pipeline {
             }
         }
 }
-}
+
 
             stage('Deploy cluster') {
             agent {
@@ -50,6 +50,6 @@ pipeline {
            steps {
                 sh 'kubectl set image deployment/credential  credential=${IMAGE_TAG}  --record -n idrepo'
             }
-            }
+ }
     
 
