@@ -48,7 +48,13 @@ pipeline {
                 }
             }
            steps {
-                sh 'kubectl set image job/idrepo-saltgen  idrepo-saltgen=${IMAGE_TAG}  --record -n idrepo'
+                
+                kubectl delete job idrepo-saltgen -n idrepo --ignore-not-found=true
+  
+                kubectl create job idrepo-saltgen \
+                --image=${IMAGE_TAG} \
+                -n idrepo
+
             }
             }
     
