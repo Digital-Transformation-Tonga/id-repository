@@ -48,7 +48,7 @@ pipeline {
                 }
             }
            steps {
-                sh 'kubectl set image deployment/regclient  regclient=${IMAGE_TAG}  --record -n regclient'
+                sh 'kubectl set image deployment/credential  credential=${IMAGE_TAG}  --record -n idrepo'
             }
             }
     
