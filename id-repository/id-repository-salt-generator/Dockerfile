@@ -14,16 +14,16 @@ LABEL build_time=${BUILD_TIME}
 ARG spring_config_label=qa-release-1.4.1-ES
 
 # can be passed during Docker build as build time environment for spring profiles active 
-ARG active_profile
+ARG active_profile=default
 
 # can be passed during Docker build as build time environment for config server URL 
-ARG spring_config_url
+ARG spring_config_url=http://config-server.config-server/config
 
 # can be passed during Docker build as build time environment for config server URL 
 ARG spring_config_name
 
 # can be passed during Docker build as build time environment for spring server port
-ARG server_port
+ARG server_port=8092
 
 # can be passed during Docker build as build time environment for schema name for Salt Generator 
 ARG salt_gen_db_alias
