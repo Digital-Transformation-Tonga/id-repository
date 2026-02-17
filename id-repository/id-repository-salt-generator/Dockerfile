@@ -11,16 +11,16 @@ LABEL commit_id=${COMMIT_ID}
 LABEL build_time=${BUILD_TIME}
 
 # can be passed during Docker build as build time environment for github branch to pickup configuration from.
-# ARG spring_config_label
+ARG spring_config_label=qa-release-1.4.1-ES
 
 # can be passed during Docker build as build time environment for spring profiles active 
-# ARG active_profile
+ARG active_profile
 
 # can be passed during Docker build as build time environment for config server URL 
-# ARG spring_config_url
+ARG spring_config_url
 
 # can be passed during Docker build as build time environment for config server URL 
-# ARG spring_config_name
+ARG spring_config_name
 
 # can be passed during Docker build as build time environment for spring server port
 ARG server_port
