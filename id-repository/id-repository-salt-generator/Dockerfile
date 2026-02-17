@@ -20,7 +20,7 @@ ARG active_profile
 ARG spring_config_url
 
 # can be passed during Docker build as build time environment for config server URL 
-ARG spring_config_name
+# ARG spring_config_name
 
 # can be passed during Docker build as build time environment for spring server port
 ARG server_port
@@ -41,7 +41,7 @@ ENV active_profile_env=${active_profile}
 ENV spring_config_label_env=${spring_config_label}
 
 # environment variable to pass github branch to pickup configuration from, at docker runtime
-ENV spring_config_name_env=${spring_config_name}
+# ENV spring_config_name_env=${spring_config_name}
 
 # environment variable to pass spring configuration url, at docker runtime
 ENV spring_config_url_env=${spring_config_url}
@@ -98,7 +98,6 @@ USER ${container_user_uid}:${container_user_gid}
 
 # CMD ["java","-jar","-Dspring.cloud.config.label=${spring_config_label_env}","-Dspring.profiles.active=${active_profile_env}","-Dspring.cloud.config.uri=${spring_config_url_env}","-Dserver.port=${spring_server_port}", "id-repository-salt-generator.jar"]
 CMD ["java","-jar",
-     "-Dspring.cloud.config.name=${spring_config_name_env}",
      "-Dspring.cloud.config.label=${spring_config_label_env}",
      "-Dspring.profiles.active=${active_profile_env}",
      "-Dspring.cloud.config.uri=${spring_config_url_env}",
