@@ -96,5 +96,12 @@ RUN chown -R ${container_user}:${container_user} /home/${container_user}
 USER ${container_user_uid}:${container_user_gid}
 #EXPOSE 8092
 
-CMD ["java","-jar","-Dspring.cloud.config.label=${spring_config_label_env}","-Dspring.profiles.active=${active_profile_env}","-Dspring.cloud.config.uri=${spring_config_url_env}","-Dserver.port=${spring_server_port}", "id-repository-salt-generator.jar"]
+# CMD ["java","-jar","-Dspring.cloud.config.label=${spring_config_label_env}","-Dspring.profiles.active=${active_profile_env}","-Dspring.cloud.config.uri=${spring_config_url_env}","-Dserver.port=${spring_server_port}", "id-repository-salt-generator.jar"]
+CMD ["java","-jar",
+     "-Dspring.cloud.config.name=${spring_config_name_env}",
+     "-Dspring.cloud.config.label=${spring_config_label_env}",
+     "-Dspring.profiles.active=${active_profile_env}",
+     "-Dspring.cloud.config.uri=${spring_config_url_env}",
+     "-Dserver.port=${spring_server_port}",
+     "id-repository-salt-generator.jar"]
 
